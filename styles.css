@@ -1,0 +1,244 @@
+h1, h2, h3{
+    font-family: 'Roboto', sans-serif;
+    color:#39394F; /*rgb(179, 33, 64) rgb(33, 179, 86) rgb(49, 48, 68)*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h4{
+    font-family: 'Roboto', sans-serif;
+    color:black;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+p, ul{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.scaled-image {
+    width: 100%;
+    height: auto;
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 20;
+    text-align: left;
+}
+
+.container {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 0px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.button {
+    font-family: 'Roboto', sans-serif;
+    background-color:#39394F; /*rgb(179, 33, 64) rgb(49, 48, 68)*/ 
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.button svg {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.button:hover {
+    background-color:rgb(32, 31, 44);/*rgb(107, 20, 38) rgb(18, 95, 46)*/
+}
+
+.justify {
+    text-align: justify;
+}
+
+.image-container {
+    text-align: left;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.audio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 20px;
+}
+
+.audio-title {
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 93%;
+    text-align: center;
+}
+
+
+.input {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+.output {
+    background-color: rgb(179, 33, 64);
+    color: white;
+}
+
+pre {
+    margin: 0;
+    padding: 0px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+code {
+    font-family: 'Roboto', sans-serif;
+}
+
+.top-gradient {
+    background: linear-gradient(180deg, #39394f, #899DA8);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.top-gradient h1 {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    font-size: 2.5rem;
+}
+
+body {
+    margin: 0;
+}
+
+#examples {
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#examples .section {
+    margin-top: 18px;
+    margin-bottom: 28px;
+}
+
+#examples .section-title {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+#examples .section-title.seen {
+    color: #39394F;
+}
+
+#examples .section-title.unseen {
+    color: #B35A5A;
+}
+
+#examples .lfo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 14px;
+}
+
+#examples .lfo-block {
+    border: 1px solid #d7d7de;
+    border-radius: 8px;
+    padding: 10px 12px 12px 12px;
+    background-color: #fcfcfd;
+}
+
+#examples .lfo-block h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #39394F;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+#examples .table {
+    display: grid;
+    gap: 6px;
+}
+
+#examples .table-header,
+#examples .table-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+#examples .table-header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #39394F;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e3e3e8;
+}
+
+#examples .table-row {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#examples .feedback-cell {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #39394F;
+}
+
+#examples .audio-cell {
+    min-width: 0;
+}
+
+#examples audio {
+    width: 100%;
+    height: 32px;
+}
+
+#examples .empty {
+    font-family: 'Roboto', sans-serif;
+    color: #666;
+}

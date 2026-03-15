@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gray-Box Modeling of Flanger Effect (EEICT 2026, David Leitgeb)</title>
+    <link rel="icon" href="icons/waveform.svg" type="image/svg+xml">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="top-gradient">
+            <h1>Gray-Box Modeling of Flanger Effect</h1>
+    </div>
+    <div class="container">
+
+
+        <div class="content">
+            <!--<h1>Gray-Box Modeling of Flanger Effect</h1>-->
+            <h2>EEICT 2026</h2>
+            <p>
+                David Leitgeb<br>
+                <b>david.leitgeb@vutbr.cz</b><br>
+            </p>
+
+            <h2>Abstract</h2>
+            <p class="justify">This paper presents a gray-box neural network model of the flanger audio effect. The proposed architecture estimates the time-variant transfer function of the flanger effect and applies it to the Short-Time Fourier Transform (STFT) of the input signal to produce the output signal. The model was implemented in the PyTorch framework and evaluated using the error-to-signal ratio (ESR) metric, with results compared to a previously proposed black-box approach. Experimental results show that the model is capable of reproducing the characteristic comb-filter character of the flanger effect while achieving competitive performance for the considered parameter
+            settings.</p>
+            <p class="justify"></p>
+            <h3>Resources</h3>
+            <!--PAPER BUTTON-->
+            <a href="" class="button">
+                <img src="icons/file-text.svg" alt="Paper" style="width: 20px; margin-right: 8px;">
+                Paper (to be published)
+            </a>
+
+            <h2 style="margin-top: 10px;">Model architecture</h2>
+
+            <div class="image-container">
+                <img src="svg/fig_model_architecture.svg" alt="Model architecture" width="50%">
+            </div>
+
+            <h2>Training Parameters</h2>
+                <style>
+                table {
+                border-collapse: collapse;
+                border: 2px solid black;   /* bold outer border */
+                font-family: 'Roboto', sans-serif;; 
+                }
+                td, th {
+                border: 1px solid black;   /* inner cell borders */
+                padding: 6px 12px;
+                font-family: 'Roboto', sans-serif;; 
+                }
+                </style>
+
+                <table>
+                <tr>
+                <th colspan="2"><b>Training:</b></th>
+                <th colspan="2"><b>STFT:</b></th>
+                </tr>
+                <tr>
+                <td>Epochs</td><td>10,000</td>
+                <td>FFT size</td><td>4096</td>
+                </tr>
+                <tr>
+                <td>Batch size</td><td>1</td>
+                <td>Frame size</td><td>1764</td>
+                </tr>
+                <tr>
+                <td>Optimizer</td><td>Adam</td>
+                <td>Hop size</td><td>441</td>
+                </tr>
+                <tr>
+                <td>LR exponential decay</td><td>0.9997</td>
+                <th colspan="2"><b>Model:</b></th>
+                </tr>
+                <tr>
+                <th colspan="2"><b>Dataset:</b></th>
+                <td>LSTM hidden size</td><td>32</td>
+                </tr>
+                <tr>
+                <td>Sample rate</td><td>44.1 kHz</td>
+                <td>MLP hidden size</td><td>512</td>
+                </tr>
+                </table>
+
+            <h2>Experiments</h2>
+
+            <h3>Comb Filter</h3>
+
+            <p class="justify">The first experiment evaluates whether the proposed model correctly reproduces the comb-filter character, which represents the defining characteristic of the flanger effect. The input signal used during evaluation was white noise. The LFO rate and feedback gain were set to 0.23 Hz and 75 %, respectively.</p>
+
+            <div class="row">
+                <div class="image-container">
+                    <img src="svg/fig_experiment_01_spectrogram_target.svg" class="scaled-image", style="width: 100%">
+                </div>
+            </div>
+
+            <div class="example-container">
+                <!--Audio players-->
+                <div class="row">
+                    <!--Input audio-->
+                    <div class="audio-section">
+                        <p class="audio-title input", style="background-color: #39394f">Target</p>
+                        <audio controls>
+                            <source src="audio/noise_comb_output_target.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="image-container">
+                    <img src="svg/fig_experiment_01_spectrogram_pred.svg" class="scaled-image", style="width: 100%">
+                </div>
+            </div>
+
+            <div class="example-container">
+                <!--Audio players-->
+                <div class="row">
+                    <!--Input audio-->
+                    <div class="audio-section">
+                        <p class="audio-title input", style="background-color: #5f7079">Predicted</p>
+                        <audio controls>
+                            <source src="audio/noise_comb_output_pred.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <h3>ESR Evaluation</h3>
+            <p class="justify">One of the metrics used to evaluate the proposed model was ESR. Figure below shows the ESR values for different combinations of LFO rate and feedback gain. The horizontal axis corresponds to the LFO rate, while the vertical axis represents the feedback gain. Axis labels in black correspond to parameter configurations used during training, while red labels represent unseen parameter combinations.</p>
+            <div class="row">
+                <div class="image-container">
+                    <img src="svg/fig_experiment_02_esr_map.svg" class="scaled-image">
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="example-container">
+                <!--Audio players-->
+                <div class="row">
+                    <!--Input audio-->
+                    <div class="audio-section">
+                        <p class="audio-title input">Input</p>
+                        <audio controls>
+                            <source src="audio/guitar_dry_input.wav" type="audio/wav">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div id="examples"></div>
+
+            <h3>ESR Dependence on Sequence Length</h3>
+
+            <p class="justify">Another experiment evaluated how the ESR changes with the length of the evaluated signal for different parameter configurations. The results are shown in the figure below. The test signal was a one-minute guitar recording obtained from a reference listed in the paper.</p>
+
+            <div class="row">
+                <div class="image-container">
+                    <img src="svg/fig_experiment_03_inference_robustness.svg" class="scaled-image">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="examples.js"></script>
+</body>
+
+</html>
