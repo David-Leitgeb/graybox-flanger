@@ -8,4 +8,4 @@ This paper presents a gray-box neural network model of the flanger audio effect.
 - [Listening page](https://david-leitgeb.github.io/graybox-flanger/)
 
 ### Model Architecture
-![Graphical interface of the proposed FX plug-in](/svg/fig\_model\_architecture.svg)
+<img src="svg/fig_model_architecture.svg" style="background:white>
